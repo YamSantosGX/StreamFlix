@@ -1,0 +1,404 @@
+/* ========================================================================== 
+                        MÓDULO: CSS/STREAMFLIX.CSS
+   ========================================================================== */
+/* CABEÇALHO: o topo que fica preso e mostra logo, menu e perfil. */
+/*
+  Explicação:
+  - Este bloco faz a barra de cima ficar sempre no lugar, mesmo quando você rola.
+  - "display: flex" organiza as coisas em linha, com espaço entre;
+  - "position: fixed" prende no topo como cola;
+  - "z-index: 999" garante que fica na frente dos outros.
+  - O gradiente cria um sombreamento roxo em cima que some embaixo.
+*/
+.header-streamflix {
+  display: flex;
+  align-items: center;
+  padding: 15px 5%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: linear-gradient(
+    to bottom,
+    rgba(68, 0, 91, 0.9) 10%,
+    transparent 100%
+  );
+  transition: background-color 0.5s ease;
+}
+/* Quando a página rola o cabeçalho muda de cor, para indicar que está fixo. */
+/*
+  Explicação:
+  - Classe extra que aparece quando a página está scrollando.
+  - Troca o fundo para uma cor de base, tipo um figurino novo.
+*/
+.header-streamflix.rolagem {
+  background-color: var(--cor-fundo);
+}
+
+/* O nome Streamflix estilo logo. Bem grandão e chamativo. */
+/*
+  Explicação:
+  - Ajusta tamanho, cor e sombra do texto que é o nome do site.
+  - Mostra que é algo clicável com cursor pointer.
+*/
+.logo-streamflix {
+  color: var(--cor-primaria);
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #8b3bff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Menu de navegação com links como se fossem botõezinhos no topo. */
+.menu-navegacao {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin-left: 30px;
+  flex-grow: 1;
+}
+
+/* O estilo dos links dentro do menu.
+   - cor clara, sem sublinhado, e transição suave ao passar o mouse. */
+.menu-navegacao a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.menu-navegacao a:hover,
+.menu-navegacao a.ativo {
+  color: white;
+  font-weight: bold;
+}
+
+/* Área direita do cabeçalho: ícones de perfil e outras ações. */
+.area-direita-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* A foto do perfil: quadradinho pequeno, arredondado e clicável. */
+.perfil-ativo-nav img {
+  width: 35px;
+  height: 35px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Busca IA ✨
+   - Caixa de pesquisa com detalhes roxinhos.
+   - Fica com luz mais forte quando você clica para digitar. */
+.busca-ia {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--cor-primaria);
+  border-radius: 20px;
+  padding: 5px 15px;
+  transition: var(--transicao-padrao);
+}
+.busca-ia:focus-within {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+}
+.busca-ia input {
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  padding: 5px;
+  width: 200px;
+  font-size: 0.9rem;
+}
+
+/* Botão de lupa dentro da caixa de busca. */
+.busca-ia button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+.busca-ia button:hover {
+  transform: scale(1.2);
+}
+
+/* HERO BANNER: área principal grande com o filme em destaque */
+/*
+  - Altura total da tela (100vh) para o pôster ocupar todo o espaço.
+  - background-size: cover faz a imagem preencher sem distorcer.
+  - alinhamento no centro para o título, descrição e botões ficarem bonitinhos.
+*/
+
+#view-browse {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Faz o banner ocupar toda a largura disponível */
+}
+/* 1. O Container do Banner */
+/* 1. O Banner Blindado */
+.filme-principal {
+  width: 100%;
+  min-height: 100vh; /* min-height garante que ele nunca colapse */
+  flex-shrink: 0; /* Impede o contêiner pai de amassar o banner */
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 5%;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. O Conteúdo do Banner */
+.conteudo-principal {
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Título do filme: grande e brilhante como um cartaz. */
+.titulo-filme {
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 4px 8px rgba(53, 5, 68, 0.6);
+}
+/* Texto pequeno com descrição do filme para encantar quem vê. */
+.descricao-filme {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 2px rgba(40, 10, 65, 0.8);
+}
+
+/* Container de botões, alinha os botões lado a lado com espaço. */
+.botoes-container {
+  display: flex;
+  gap: 15px;
+}
+/* Estilo base dos botões grandes do filme: play e info. */
+.botao-streamflix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transicao-padrao);
+}
+.botao-play {
+  background-color: var(--cor-botao-play);
+  color: #000;
+}
+.botao-play:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.botao-info {
+  background-color: var(--cor-botao-info);
+  color: #fff;
+}
+/* O botão de informações muda ao passar o mouse, mostrando que é clicável. */
+.botao-info:hover {
+  background-color: rgba(109, 109, 110, 0.4);
+}
+
+/* CARROSSÉIS: linhas de cartões de filmes que você pode rolar. */
+.secao-carrossel {
+  width: 100%;
+  max-width: none !important;
+  margin-top: -50px;
+  position: relative;
+  z-index: 10;
+  padding-bottom: 50px;
+}
+
+#container-carroseis {
+ background-color: #000000;
+ background: #46d369;
+}
+
+/* Cada linha de filmes recebe espaço entre as seções. */
+.linha-filmes {
+  margin-bottom: 30px;
+}
+
+/* Título de cada linha de carrossel. */
+.linha-filmes h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #fefcff;
+  margin-left: 10px;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Carrossel que rola horizontalmente. */
+.carrossel-puro {
+  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 40px;
+  padding: 60px 0;
+  margin-top: -40px;
+  scroll-behavior: smooth;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+/* Esconde a barra de rolagem para ficar mais limpo. */
+.carrossel-puro::-webkit-scrollbar {
+  grid-template-columns: repeat(3, 2fr);
+  display: none;
+}
+/* Cada card do filme no carrossel. */
+.item-filme {
+  flex: 0 0 calc(100% / 6 - 10px);
+  min-width: 200px;
+  border-radius: 4px;
+  transition: transform 0.4s;
+  cursor: pointer;
+  position: relative;
+}
+
+.capa-estatica {
+  transition: opacity 0.3s;
+}
+
+/* O Card Escondido */
+.card-hover-detalhes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180%; /* Fica 40% maior que o original */
+  height: 180%;
+  transform: translate(-50%, -50%) scale(0.8); /* Fica levemente encolhido e invisível */
+  background-color: #181818;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Quando o JS ativa o hover */
+.item-filme.hover-ativo {
+    z-index: 100; /* Joga todo o container pra frente */
+}
+.item-filme.hover-ativo .capa-estatica {
+    opacity: 0; /* Esconde o pôster original */
+}
+.item-filme.hover-ativo .card-hover-detalhes {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1); /* Expande para o tamanho real */
+    pointer-events: auto;
+}
+
+/* O Video e o Progresso */
+.video-container {
+    top: 0; left: 0; right: 0; bottom: 0;
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.barra-progresso {
+    width: 100%;
+    height: 4px;
+    background: #444;
+    top: -10px;
+}
+.progresso-preenchido {
+    height: 100%;
+    background: #e50914;
+}
+
+/* Informações e Botões */
+.info-container { padding: 15px; color: white; }
+.botoes-hover { display: flex; gap: 8px; margin-bottom: 15px; }
+.botao-redondo {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+    background: rgba(30,30,30,0.8);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: border-color 0.2s, background 0.2s;
+}
+.botao-redondo:hover { border-color: white; background: #333; }
+.botao-redondo.play { background: white; color: black; border-color: white; }
+
+/* Tipografia igual a foto */
+.meta-hover { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.meta-relevancia { color: #46d369; font-weight: bold; }
+.meta-idade { border: 1px solid rgba(255,255,255,0.4); padding: 0 4px; font-size: 0.75rem;}
+.meta-tags { font-size: 0.8rem; color: #a3a3a3; }
+
+/* Imagem do filme dentro do card, ajustada sem cortar feio. */
+.item-filme img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+/* Faz o card aumentar um pouquinho quando o mouse estiver em cima. */
+.item-filme:hover {
+  transform: scale(1.15);
+  z-index: 99;
+}
+
+/* Etiqueta IA nos posters: aparece apenas no hover. */
+.etiqueta-ia {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: var(--cor-primaria);
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.item-filme:hover .etiqueta-ia {
+  opacity: 1;
+}
+
+.painel-gerenciamento {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2c0746;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1000;
+}

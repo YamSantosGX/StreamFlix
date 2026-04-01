@@ -1,0 +1,181 @@
+/* === FUNDO E CENTRALIZAÇÃO GERAL === */
+
+.container-selecao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Ajuda a centralizar tudo na tela */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto; /* Centraliza a caixa na horizontal */
+  padding: 5rem;
+}
+
+/* === TIPOGRAFIA === */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 16px rgba(123, 72, 255, 0.45);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  /* Texto responsivo */
+  font-weight: 400;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-shadow: 0 1px 10px rgba(123, 72, 255, 0.25);
+}
+
+/* === CONTAINER DA SEÇÃO === */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+
+/* === GRID DE PERFIS (4 Lado a Lado no Desktop) === */
+.profiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 20%, 220px), 1fr));
+  gap: 2vw; /* Espaçamento flexível */
+  list-style: none;
+  margin-bottom: 4rem;
+  width: auto;
+  height: auto;
+}
+
+/* Animação de Entrada em cascata */
+.profiles {
+  opacity: 0;
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.profiles:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.profiles:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.profiles:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.profiles:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Sempre que o mouse passar sobre uma imagem de perfil, só ela mesma recebe efeito. */
+.profiles img:hover {
+  transform: scale(1.08);
+  border-color: #8b3bff;  /* Borda roxa */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  /* agora isso acontece por item, não por toda a linha */
+}
+
+/* === ESTILO INDIVIDUAL DO PERFIL === */
+
+.lista-perfis-dom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 4s ease;
+}
+
+.lista-perfis-dom:hover {
+  transform: scale(1.08);
+  /* Aumenta levemente */
+}
+
+.opcoes-avatar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 100%;
+}
+.opcoes-avatar img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Força a proporção 1:1 (Quadrado) */
+  object-fit: cover; /* Evita que a imagem distorça */
+  border-radius: 12px;
+  border: 3px solid rgb(114, 37, 202);
+  box-shadow: 0 4px 10px rgba(17, 2, 43, 0.5);
+  transition:
+    border-color 6s ease,
+    box-shadow 6s ease;
+    translate: (-2px, -2px);
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Garante que o perfil seja um Quadrado Perfeito */
+figure img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Força a proporção 1:1 (Quadrado) */
+  object-fit: cover; /* Evita que a imagem distorça */
+  border-radius: 12px;
+  border: 3px solid transparent;
+  box-shadow: 0 4px 10px rgba(29, 22, 43, 0.5);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+figcaption {
+  color: #d6d3d3;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+/* === EFEITOS DE HOVER NO PERFIL === */
+
+/* === BOTÃO DE ADICIONAR PERFIL === */
+.btn-gerenciar {
+  background: transparent;
+  color: #d5d1d6;
+  border: 3px solid #54288f;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 10px; /* Formato de retângulo */
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin-top: auto; /* Empurra para o fundo se houver espaço sobrando */
+}
+
+/* Efeito Hover do Botão (Brilho Roxo) */
+.btn-gerenciar:hover {
+  color: #ffffff;
+  border-color: #9d4edd;
+  background-color: rgba(157, 78, 221, 0.1);
+  box-shadow: 0 0 25px 5px rgba(157, 78, 221, 0.5);
+  /* Brilho roxo atrás */
+  transform: translateY(-2px);
+}
+
+/* === KEYFRAMES PARA ANIMAÇÃO DE ENTRADA === */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

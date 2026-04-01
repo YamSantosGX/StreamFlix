@@ -1,0 +1,57 @@
+/*  Aqui estão as regras mais gerais do site. */
+* {
+  margin: 00;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/*  Este arquivo define as cores e o jeito bonito das cartas e botões. */
+:root {
+  --bg: #0f041c;
+  /* Cor de fundo principal, um roxo escuro */
+  --bg-soft: #1c0f38;
+  /* Fundo secundário, roxo médio para gradientes */
+  --accent: #8b3bff;
+  /* Cor de destaque, roxo vibrante para bordas e hovers */
+  --accent-strong: #a73cff;
+  /* Destaque mais intenso para elementos ativos */
+  --text: #ececf5;
+  /* Cor do texto principal, quase branco */
+  --text-muted: #bbb9cb;
+  /* Texto secundário, cinza claro */
+  --card: rgba(28, 15, 56, 0.75);
+  /* Fundo semi-transparente para cartões de perfil */
+  --cor-botao-play: #ffffff;
+  --cor-botao-info: rgba(109, 109, 110, 0.7);
+  --cor-fundo: #000000
+  --transicao-padrao: all 0.3s ease;
+}
+
+/* Corpo da página: cor de fundo e centralização para tudo ficar arrumado. */
+body {
+  /* Fundo escuro levemente roxo */
+  background: radial-gradient(circle at center, #3b1172 0%, #0a0410 100%);
+  color: #f3eeee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* As "views" são as telas que aparecem/descem no projeto.
+   - Por padrão elas estão escondidas (display:none) e transparentes.
+   - Quando recebem .active aparecem e ficam visíveis. */
+.view {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  min-height: 100vh;
+}
+/* .active = ela está ligada e aparece. */
+.view.active {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+}

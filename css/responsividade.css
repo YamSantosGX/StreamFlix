@@ -1,0 +1,89 @@
+/* === RESPONSIVIDADE (Telas Menores) === */
+@media (max-width: 980px) {
+   .menu-navegacao {
+    position: fixed;
+    right: -280px;
+    top: 0;
+    width: 100px;
+    height: 100vh;
+    background: #2e1372;
+    box-shadow: 2px 0 18px rgba(0, 0, 0, 0.35);
+    flex-direction: column;
+    padding: 1.4rem 1rem;
+    gap: 10px;
+    z-index: 999;
+    overflow-y: auto;
+    transition: transform 0.25s ease, left 0.25s ease;
+    transform: translateX(-100%);
+  }
+
+  .menu-navegacao.ativo {
+    transform: translateX(0);
+    right: 0;
+  }
+
+  .menu-navegacao a {
+    width: calc(100% - 0.25rem);
+    padding: 0.65rem 0.8rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    display: block;
+  }
+
+  .menu-navegacao a.ativo,
+  .menu-navegacao a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+  }
+
+  .area-direita-nav {
+    gap: 8px;
+  }
+
+  /* Esconde busca IA em telas menores conforme solicitado */
+  .busca-ia,
+  .header-streamflix .busca-ia {
+    display: none !important;
+  }
+
+  .header-streamflix {
+    justify-content: space-between;
+  }
+
+  .logo-streamflix {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profiles {
+    /* Muda para Grid 2x2 em telas menores */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    /* Limita a largura para não ficarem gigantes em tablets */
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .profiles {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 280px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .btn-gerenciar {
+    width: 100%;
+  }
+}
